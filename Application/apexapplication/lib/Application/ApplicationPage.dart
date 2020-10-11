@@ -1,3 +1,4 @@
+import 'package:apexapplication/ApexHideDataService/ApexHideDataServicePage.dart';
 import 'package:apexapplication/Landing/LandingPage.dart';
 import 'package:apexapplication/Loading/LoadingPage.dart';
 import 'package:flutter/cupertino.dart';
@@ -44,7 +45,9 @@ class ApplicationPage extends StatelessWidget {
                 bottom: TabBar(
                   indicatorColor: Colors.black87,
                   unselectedLabelColor: Colors.black87,
-                  onTap: (index) {},
+                  onTap: (index) {
+                    model.changePage(index);
+                  },
                   tabs: [
                     Tab(
                       child: _appBarTabIcon[0],
@@ -78,7 +81,7 @@ Widget _ServicepPage(BuildContext context, bool isLogin) {
   return Stack(
     children: [
       _tabPage(model.page, 0, LandingPage()),
-      _tabPage(model.page, 1, LoadingPage()),
+      _tabPage(model.page, 1, ApexHideDataServicePage()),
       _tabPage(model.page, 2, LoadingPage()),
       _tabPage(model.page, 3, LoadingPage()),
       _tabPage(model.page, 4, LoadingPage()),
