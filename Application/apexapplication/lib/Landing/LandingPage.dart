@@ -74,17 +74,6 @@ class LandingPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('HidePositionの提供',
-                                style: TextStyle(fontSize: 25)),
-                            SizedBox(height: 10),
-                            Text('ランクマッチでは人数不利を負ったまま試合を継続することが頻発します。'),
-                            Text('ポイントの増加を目的として「Hideをする」行為は立派な戦略です。'),
-                            Text('ここでは、それらの情報を累積・共有します'),
-                          ],
-                        ),
                         Container(
                             width: 400,
                             height: 400,
@@ -92,31 +81,38 @@ class LandingPage extends StatelessWidget {
                               'images/RankMatchIcon.jpg',
                               fit: BoxFit.cover,
                             )),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 50),
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
                         Container(
-                            width: 400,
-                            height: 400,
-                            child: Image.asset(
-                              'images/RankMatchIcon.jpg',
-                              fit: BoxFit.cover,
-                            )),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('WeaponRecoilの閲覧',
-                                style: TextStyle(fontSize: 25)),
-                            SizedBox(height: 10),
-                            Text('リコイルの制御はFPSに置いて避けられません。'),
-                            Text('詳細なリコイルの把握とリコイルを目視しながらの'),
-                            Text('快適なトレーニングのための情報を提供します。'),
-                          ],
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('HidePositionの提供',
+                                    style: TextStyle(
+                                        fontSize: 25, color: Colors.white)),
+                              ),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Text(
+                                    'ランクマッチでは人数不利を負ったまま試合を継続することが頻発します。',
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Text('ポイントの増加を目的として「Hideをする」行為は立派な戦略です。',
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Text('ここでは、それらの情報を累積・共有します',
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                            ],
+                          ),
+                          color: Colors.black87,
+                          width: 600,
+                          height: 150,
                         ),
                       ],
                     ),
@@ -129,9 +125,20 @@ class LandingPage extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('APEXTips', style: TextStyle(fontSize: 25)),
-                            Text('細かな使用や一見してわからない、だが試合に大きい影響を与える知識があります。'),
-                            Text('これらを閲覧することで、特に新規の方のお役に立てると考えています。'),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text('APEXTips',
+                                  style: TextStyle(fontSize: 25)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Text(
+                                  '細かな使用や一見してわからない、だが試合に大きい影響を与える知識があります。'),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Text('これらを閲覧することで、特に新規の方のお役に立てると考えています。'),
+                            ),
                           ],
                         ),
                         Container(

@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
 class ApexHideDataServiceModel extends ChangeNotifier {
-  bool isLoading = true;
+  bool isLoading = true; //todo Firebaseからのデータ取得状況のState
+
   String searchText = '';
 
-  List<String> apexDatas = ['A', 'B', 'C', 'D', 'E'];
+  var toggleState = [false, false, false];
+  changeToggleState(status, i) {
+    toggleState[i] = status;
+    notifyListeners();
+  }
 }

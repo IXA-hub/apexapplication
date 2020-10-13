@@ -1,4 +1,5 @@
 import 'package:apexapplication/ApexHideDataService/ApexHideDataServicePage.dart';
+import 'package:apexapplication/ApexTipsService/ApexTipsServicePage.dart';
 import 'package:apexapplication/Landing/LandingPage.dart';
 import 'package:apexapplication/Loading/LoadingPage.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,10 +20,6 @@ class ApplicationPage extends StatelessWidget {
       style: TextStyle(color: Colors.white),
     ),
     Text(
-      'WeaponRecoil',
-      style: TextStyle(color: Colors.white),
-    ),
-    Text(
       'ApexTips',
       style: TextStyle(color: Colors.white),
     ),
@@ -36,7 +33,7 @@ class ApplicationPage extends StatelessWidget {
       child: Consumer<AppModel>(
         builder: (context, model, child) {
           return DefaultTabController(
-            length: 5,
+            length: 4,
             child: Scaffold(
               resizeToAvoidBottomInset: false,
               appBar: AppBar(
@@ -61,9 +58,6 @@ class ApplicationPage extends StatelessWidget {
                     Tab(
                       child: _appBarTabIcon[3],
                     ),
-                    Tab(
-                      child: _appBarTabIcon[4],
-                    ),
                   ],
                 ),
               ),
@@ -81,10 +75,9 @@ Widget _ServicepPage(BuildContext context, bool isLogin) {
   return Stack(
     children: [
       _tabPage(model.page, 0, LandingPage()),
-      _tabPage(model.page, 1, ApexHideDataServicePage()),
-      _tabPage(model.page, 2, LoadingPage()),
-      _tabPage(model.page, 3, LoadingPage()),
-      _tabPage(model.page, 4, LoadingPage()),
+      _tabPage(model.page, 1, LoadingPage()),
+      _tabPage(model.page, 2, ApexHideDataServicePage()),
+      _tabPage(model.page, 3, ApexTipsServicePage()),
     ],
   );
 }

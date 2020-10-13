@@ -5,6 +5,7 @@ Apexの小ネタ提供サイト
     ApexHideDate一覧機能
     ApexWeponRecoil一覧機能(アタッチメント別)
     ApexTips サーミット扉貫通　グレネードを扉の角からいれる　ADS解除直後は精度が高い　リング外での回復タイミング 当たり判定
+             ミルフィーユ外のぼり　スライディング虚空  ワトソンフェンスの組み方
     Account(ログイン機能)
         passwordリセット機能
         nickname再設定
@@ -54,3 +55,6 @@ or
             ver
         Asana
             タスク管理ツール
+        AdobeXd
+        AdobeLr
+        AdobePs

@@ -1,19 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 import 'package:provider/provider.dart';
 
-import 'ApexHideDataModel.dart';
+import 'ApexTipsServiceModel.dart';
 
-class ApexHideDataServicePage extends StatelessWidget {
+class ApexTipsServicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextEditingController searchController = TextEditingController();
-    return ChangeNotifierProvider<ApexHideDataServiceModel>(
-      create: (_) => ApexHideDataServiceModel(), //..fetchApexData(),
+    return ChangeNotifierProvider<ApexTipsServiceModel>(
+      create: (_) => ApexTipsServiceModel(), //..fetchApexData(),
       // ignore: missing_return
-      child:
-          Consumer<ApexHideDataServiceModel>(builder: (context, model, child) {
+      child: Consumer<ApexTipsServiceModel>(builder: (context, model, child) {
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Stack(
@@ -28,11 +26,11 @@ class ApexHideDataServicePage extends StatelessWidget {
                       _searchBar(context, searchController),
                     ],
                     flexibleSpace:
-                        FlexibleSpaceBar(title: Text('ApexHideDataList')),
+                        FlexibleSpaceBar(title: Text('ApexTipsList')),
                   ),
                   SliverGrid(
                     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 250.0,
+                      maxCrossAxisExtent: 800.0,
                       mainAxisSpacing: 10.0,
                       crossAxisSpacing: 10.0,
                       childAspectRatio: 4.0,
@@ -43,7 +41,7 @@ class ApexHideDataServicePage extends StatelessWidget {
                           visible:
                               true, //model.ApexDatas[index].sortState, //todo ここに表示非表示の条件を記入
                           child: Padding(
-                            padding: const EdgeInsets.all(4.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.white,
@@ -63,11 +61,52 @@ class ApexHideDataServicePage extends StatelessWidget {
                               ),
                               child: Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('testmessageaa'),
-                                  IconButton(
-                                      icon: Icon(Icons.movie), onPressed: null)
+                                  Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text('TestTitle',
+                                              style: TextStyle(fontSize: 24)),
+                                          IconButton(
+                                              icon: Icon(
+                                                Icons.article_outlined,
+                                              ),
+                                              onPressed: null),
+                                        ],
+                                      ),
+                                      Flexible(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 20, left: 20),
+                                          child: Container(
+                                            width: 400,
+                                            child: Text(
+                                              'TestDodyMassage aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaad',
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 4,
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(25.0),
+                                        child: Container(
+                                            width: 100,
+                                            height: 100,
+                                            child: Image.asset(
+                                              'images/RankMatchIcon.jpg',
+                                              fit: BoxFit.cover,
+                                            )),
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),
@@ -76,19 +115,6 @@ class ApexHideDataServicePage extends StatelessWidget {
                       },
                       //childCount: model.apexDatas.length,
                     ),
-                  ),
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      _toggleSwitch(context, 'パスファインダー', 0),
-                      _toggleSwitch(context, 'KingsCanyon', 1),
-                      _toggleSwitch(context, 'WorldsEdge', 2),
-                    ],
                   ),
                 ],
               ),
@@ -102,7 +128,7 @@ class ApexHideDataServicePage extends StatelessWidget {
 
 Widget _searchBar(
     BuildContext context, TextEditingController searchController) {
-  final model = Provider.of<ApexHideDataServiceModel>(context);
+  final model = Provider.of<ApexTipsServiceModel>(context);
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
@@ -121,62 +147,8 @@ Widget _searchBar(
                 onPressed: () {
                   //model.sort(model.serchText);
                 })),
-        onChanged: (value) {
-          model.searchText = value;
-        },
+        onChanged: (value) {},
       ),
     ),
-  );
-}
-
-Widget _toggleSwitch(BuildContext context, String toggleText, int i) {
-  final model = Provider.of<ApexHideDataServiceModel>(context);
-  return Opacity(
-    opacity: 0.9,
-    child: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: FlutterSwitch(
-        toggleColor: Colors.white,
-        activeColor: Colors.tealAccent,
-        inactiveTextColor: Colors.black45,
-        activeTextColor: Colors.black45,
-        activeText: toggleText,
-        inactiveText: toggleText,
-        value: model.toggleState[i],
-        valueFontSize: 10.0,
-        width: 130,
-        borderRadius: 30.0,
-        showOnOff: true,
-        onToggle: (status) {
-          model.changeToggleState(status, i);
-        },
-      ),
-    ),
-  );
-}
-
-_showGifMovie(context, url) async {
-  await showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        actions: <Widget>[
-          Container(
-              width: 300.0,
-              height: 300.0,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(url), fit: BoxFit.cover),
-                borderRadius: BorderRadius.all(Radius.circular(75.0)),
-              )),
-          FlatButton(
-            child: Text('OK'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      );
-    },
   );
 }
