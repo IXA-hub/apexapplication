@@ -1,5 +1,3 @@
 import 'package:flutter/cupertino.dart';
 
-class ApexTipsServiceModel extends ChangeNotifier {
-  int expandedHeight = 100;
-}
+class ApexTipsServiceModel extends ChangeNotifier {}

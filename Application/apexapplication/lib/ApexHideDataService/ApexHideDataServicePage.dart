@@ -67,7 +67,11 @@ class ApexHideDataServicePage extends StatelessWidget {
                                 children: [
                                   Text('testmessageaa'),
                                   IconButton(
-                                      icon: Icon(Icons.movie), onPressed: null)
+                                      icon: Icon(Icons.movie),
+                                      onPressed: () async {
+                                        await _showGifMovie(context,
+                                            'https://firebasestorage.googleapis.com/v0/b/apexpositionapp.appspot.com/o/kingsCanyon%2Fpathfinder%2Frain1_animated_256.gif?alt=media&token=094a99cf-db86-4d90-9723-2764322c4324');
+                                      })
                                 ],
                               ),
                             ),

@@ -32,5 +32,30 @@
   <script src="main.dart.js" type="application/javascript"></script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
 
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-storage.js"></script>
+
+  <script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyBbNRHb2nadVCVNEDs7twXh-Uld4-pyIx8",
+    authDomain: "apexpositionapp.firebaseapp.com",
+    databaseURL: "https://apexpositionapp.firebaseio.com",
+    projectId: "apexpositionapp",
+    storageBucket: "apexpositionapp.appspot.com",
+    messagingSenderId: "332220433295",
+    appId: "1:332220433295:web:c228f5b55a382c472281fa",
+    measurementId: "G-WVD4KYM1B5"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
 </body>
 </html>

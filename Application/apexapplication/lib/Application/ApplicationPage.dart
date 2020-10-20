@@ -1,7 +1,8 @@
+import 'package:apexapplication/Account/AccuntPage.dart';
 import 'package:apexapplication/ApexHideDataService/ApexHideDataServicePage.dart';
 import 'package:apexapplication/ApexTipsService/ApexTipsServicePage.dart';
 import 'package:apexapplication/Landing/LandingPage.dart';
-import 'package:apexapplication/Loading/LoadingPage.dart';
+import 'package:apexapplication/SignUp/SignUpPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -75,7 +76,7 @@ Widget _ServicepPage(BuildContext context, bool isLogin) {
   return Stack(
     children: [
       _tabPage(model.page, 0, LandingPage()),
-      _tabPage(model.page, 1, LoadingPage()),
+      _tabPage(model.page, 1, isLogin ? AccountPage() : SignUpPage()),
       _tabPage(model.page, 2, ApexHideDataServicePage()),
       _tabPage(model.page, 3, ApexTipsServicePage()),
     ],
