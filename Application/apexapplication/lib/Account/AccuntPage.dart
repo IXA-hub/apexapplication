@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../AppModel.dart';
+import 'EmailSenderPage.dart';
+import 'MenbarPage.dart';
 
 class AccountPage extends StatelessWidget {
   @override
@@ -21,10 +23,10 @@ class AccountPage extends StatelessWidget {
               resizeToAvoidBottomPadding: false,
               appBar: AppBar(
                 title: Text(model.menbar.nickname),
-                //同様の使い方のEmailはセーフ,
                 bottom: TabBar(
+                  indicatorColor: Colors.white,
                   onTap: (index) {
-                    //model.setPage(index);
+                    model.changeMenbarPage(index);
                   },
                   tabs: [
                     Tab(
@@ -38,15 +40,14 @@ class AccountPage extends StatelessWidget {
               ),
               body: Stack(
                 children: [
-                  Text(model.menbar.nickname),
-//                  Visibility(
-//                    visible: model.page == 0,
-//                    //child: AccountPage(),
-//                  ),
-//                  Visibility(
-//                    visible: model.page == 1,
-//                    //child: EmailSenderPage(),
-//                  ),
+                  Visibility(
+                    visible: model.menbarPage == 0,
+                    child: MenbarPage(),
+                  ),
+                  Visibility(
+                    visible: model.menbarPage == 1,
+                    child: EmailSenderPage(),
+                  ),
                 ],
               ),
             ),

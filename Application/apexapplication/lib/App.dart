@@ -13,7 +13,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'APEX',
       theme: ThemeData(
-        primaryColor: Colors.white,
+        primaryColor: Colors.black,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: ChangeNotifierProvider<AppModel>(

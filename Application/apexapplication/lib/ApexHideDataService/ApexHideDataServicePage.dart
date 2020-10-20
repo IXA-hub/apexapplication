@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:provider/provider.dart';
 
-import 'ApexHideDataModel.dart';
+import 'ApexHideDataServiceModel.dart';
 
 class ApexHideDataServicePage extends StatelessWidget {
   @override
@@ -27,8 +27,11 @@ class ApexHideDataServicePage extends StatelessWidget {
                     actions: [
                       _searchBar(context, searchController),
                     ],
-                    flexibleSpace:
-                        FlexibleSpaceBar(title: Text('ApexHideDataList')),
+                    flexibleSpace: FlexibleSpaceBar(
+                        title: Text(
+                      'ApexHideDataList',
+                      style: TextStyle(color: Colors.black),
+                    )),
                   ),
                   SliverGrid(
                     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

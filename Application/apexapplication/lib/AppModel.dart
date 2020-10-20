@@ -55,9 +55,116 @@ class AppModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  int page = 0;
-  changePage(int page) {
-    this.page = page;
+  String deleteCheckPassword;
+  Future deleteUser() async {
+    if (deleteCheckPassword == null) {
+      throw ('パスワードを入力してください');
+    }
+
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+    await firebaseUser
+        .reauthenticateWithCredential(EmailAuthProvider.credential(
+      email: firebaseUser.email,
+      password: deleteCheckPassword,
+    ));
+    isLoading = true;
+    await firebaseUser.delete();
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(firebaseUser.uid)
+        .delete();
+    _init();
+  }
+
+  String newNickName;
+  Future changeNickName() async {
+    if (newNickName == null) {
+      throw ('usernameを入力してください');
+    }
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userID)
+        .update({'nickname': newNickName});
+    newNickName = null;
+    await getMenbarState();
+  }
+
+  String userEmail;
+  Future sendPasswordResetEmail() async {
+    final firebaseUser = FirebaseAuth.instance;
+    userEmail = firebaseUser.currentUser.email;
+    await firebaseUser.sendPasswordResetEmail(email: userEmail);
+  }
+
+  String title;
+  String mailBody;
+  String Email;
+  Future emailSend() {
+    if (title == null || title == '') {
+      throw ('タイトルを入力してください');
+    }
+    if (mailBody == null || title == '') {
+      throw ('メール内容が空です');
+    }
+    if (Email == null || Email == '') {
+      throw ('メールアドレスを入力してください');
+    }
+
+    FirebaseFirestore.instance.collection('email').add({
+      'title': title,
+      'email': Email,
+      'mailbody': mailBody,
+      'createdAt': Timestamp.now(),
+    });
+  }
+
+  int appPage = 0;
+  changeAppPage(int page) {
+    this.appPage = page;
+    notifyListeners();
+  }
+
+  int menbarPage = 0;
+  changeMenbarPage(int page) {
+    this.menbarPage = page;
+    notifyListeners();
+  }
+
+  bool deleteUserBoxState = true;
+  String deleteCheck = '';
+  deleteCheckChange(String x) {
+    deleteCheck = x;
+    notifyListeners();
+  }
+
+  deleteUserBoxStateChange(bool x) {
+    deleteUserBoxState = x;
+    notifyListeners();
+  }
+
+  bool deleteuserNextBotton = true;
+  bool deleteuserRunButton = false;
+  deleteuserNextBottonChange(bool x) {
+    deleteuserNextBotton = x;
+    notifyListeners();
+  }
+
+  deleteuserRunButtonChange(bool x) {
+    deleteuserRunButton = x;
+    notifyListeners();
+  }
+
+  bool reFleshPasswordBoxState = true;
+
+  changeefleshpasswordBoxState(bool x) {
+    reFleshPasswordBoxState = x;
+    notifyListeners();
+  }
+
+  bool nicknameBoxState = true;
+  changeNicknameBoxState(bool x) {
+    nicknameBoxState = x;
     notifyListeners();
   }
 }

@@ -25,8 +25,9 @@ class ApexTipsServicePage extends StatelessWidget {
                     actions: [
                       _searchBar(context, searchController),
                     ],
-                    flexibleSpace:
-                        FlexibleSpaceBar(title: Text('ApexTipsList')),
+                    flexibleSpace: FlexibleSpaceBar(
+                        title: Text('ApexTipsList',
+                            style: TextStyle(color: Colors.black))),
                   ),
                   SliverGrid(
                     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
